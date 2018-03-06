@@ -20,9 +20,11 @@ public class SelectionScript : MonoBehaviour {
 
     public LayerMask selectionLM;
 
+    UIManager uiManager;
+
 	// Use this for initialization
 	void Start () {
-		
+        uiManager = UIManager._Instance;
 	}
 	
 	// Update is called once per frame
@@ -32,6 +34,7 @@ public class SelectionScript : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             isSelecting = true;
+            uiManager.ClearUnitCards();
             selectedUnits.Clear();
             mousePos1 = Input.mousePosition;
         }else if (Input.GetMouseButtonUp(0))
@@ -42,6 +45,7 @@ public class SelectionScript : MonoBehaviour {
                 foreach (GameObject go in army)
                 {
                     go.GetComponentInChildren<Projector>().enabled = false;
+                    uiManager.RemoveUnitCard(go.GetComponentInChildren<UnitData>()._UnitID);
                 }
                 Click();
             }
@@ -88,6 +92,7 @@ public class SelectionScript : MonoBehaviour {
         if (Physics.Raycast(selectionRay, out hit, Mathf.Infinity, selectionLM))
         {
             hit.transform.GetComponentInChildren<Projector>().enabled = true;
+            uiManager.AddUnitCard(hit.transform.gameObject.GetComponentInChildren<UnitData>()._UnitPortrait, hit.transform.gameObject.GetComponentInChildren<UnitData>()._UnitID);
             selectedUnits.Add(hit.transform.GetComponent<AIPath>());
         }
     }
@@ -104,12 +109,14 @@ public class SelectionScript : MonoBehaviour {
                 if (!selectedUnits.Contains(go.GetComponent<AIPath>()))
                 {
                     go.GetComponentInChildren<Projector>().enabled = true;
+                    uiManager.AddUnitCard(go.GetComponentInChildren<UnitData>()._UnitPortrait, go.GetComponentInChildren<UnitData>()._UnitID);
                     selectedUnits.Add(go.GetComponent<AIPath>());
                 }
             }
             else
             {
                 selectedUnits.Remove(go.GetComponent<AIPath>());
+                uiManager.RemoveUnitCard(go.GetComponentInChildren<UnitData>()._UnitID);
                 go.GetComponentInChildren<Projector>().enabled = false;
             }
         }

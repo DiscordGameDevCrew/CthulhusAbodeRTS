@@ -66,7 +66,7 @@ public class OrderScript : MonoBehaviour {
         }
     }
 
-    void OnDrawGizmos()
+    /*void OnDrawGizmos()
     {
             return;
 
@@ -94,5 +94,5 @@ public class OrderScript : MonoBehaviour {
         {
             Gizmos.DrawSphere(t.position + v, 0.1f);
         }
-    }
+    }*/
 }

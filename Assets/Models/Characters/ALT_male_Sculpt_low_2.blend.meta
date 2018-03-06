@@ -59,6 +59,8 @@ ModelImporter:
     100102: Thumb2_R_001
     100104: Toes_L
     100106: Toes_R
+    100108: Cube
+    100110: Cylinder
     400000: //RootNode
     400002: Armature
     400004: Bicep_L
@@ -113,16 +115,28 @@ ModelImporter:
     400102: Thumb2_R_001
     400104: Toes_L
     400106: Toes_R
+    400108: Cube
+    400110: Cylinder
     2100000: Skin__Untitled
     2100002: Eye__Untitled_001
+    2100004: unnamed
+    2100006: Handle__Untitled_002
+    2100008: Metal__Untitled_002
+    2300000: Cube
+    3300000: Cube
     4300000: low_poly
+    4300002: Cube
+    4300004: Cylinder
     7400000: Default Take
     7400002: BindPose
     7400004: Idle
     7400006: Idle_Looking
     7400008: Walk
+    7400010: Idle_Worker
+    7400012: Worker_Build_1
     9500000: //RootNode
     13700000: low_poly
+    13700002: Cylinder
   externalObjects: {}
   materials:
     importMaterials: 1
